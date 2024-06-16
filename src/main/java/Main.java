@@ -5,6 +5,7 @@ public class Main { //Main – класс, в котором происходи�
     public static void main(String[] args) {
         ArrayList <Car> participants = new ArrayList<>(3);
         Scanner scanner = new Scanner(System.in);
+
         Race race = new Race();
 
         System.out.println("Привет!");

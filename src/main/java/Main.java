@@ -29,7 +29,6 @@ public class Main { //Main – класс, в котором происходи�
                     System.out.println("— Ввод не должен быть пустым. Введи скорость от 1 до 250");
                     continue;
                 }
-
                 try {
                     int speed = Integer.parseInt(input);
                     if (speed <= 0 || speed > 250) {

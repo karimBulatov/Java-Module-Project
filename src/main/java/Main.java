@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-0import java.util.Scanner;
+import java.util.Scanner;
 
 public class Main { //Main – класс, в котором происходит считывание пользовательского ввода и коммуникация с остальными классами.
     public static void main(String[] args) {

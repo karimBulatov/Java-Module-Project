@@ -7,33 +7,47 @@ public class Main { //Main – класс, в котором происходи�
         Scanner scanner = new Scanner(System.in);
         Race race = new Race();
 
-        System.out.println("Привет!");
-        System.out.println("Добро пожаловать на «24 часа Ле-Мана»");
+        System.out.println("— Привет!");
+        System.out.println("— Добро пожаловать на «24 часа Ле-Мана»");
 
         for(int i = 1; i <= 3; i++) {
-            System.out.println("— Введите название машины №"+ i +": ");
-            String name = scanner.nextLine();
-            if(name.isEmpty()){
-                break;
+            System.out.println("— Введите название машины №" + i + ": ");
+            String name = "";
+            while (true) {
+                name = scanner.nextLine();
+                if (name.trim().isEmpty()) {
+                    System.out.println("Не ввел название машины.");
+                } else {
+                    System.out.println("Отлично"); //
+                    break;
+                }
             }
             System.out.println("— Введите скорость машины " + name + ": ");
-            if(scanner.hasNext()) {
-                boolean a = true;
-                while(a) {
-                    int speed = scanner.nextInt();
-                    if (speed <= 250 && speed > 0) {
-                        participants.add(new Car(name, speed));
-                        a = false;
-                    }else{
-                        System.out.println("— Неправильная скорость");
-                    }
+            while (true) {
+                String input = scanner.nextLine().trim();
+                if (input.isEmpty()) {
+                    System.out.println("— Ввод не должен быть пустым. Введи скорость от 1 до 250");
+                    continue;
                 }
-            }else {
-                scanner.next();
+                try {
+                    int speed = Integer.parseInt(input);
+                    if (speed <= 0 || speed > 250) {
+                        System.out.println("— Неправильная скорость. Введи скорость от 1 до 250");
+                        continue;
+                    } else {
+                        participants.add(new Car(name, speed));
+                        break;
+                    }
+
+                } catch (NumberFormatException e) {
+                    System.out.println("— Неверные данные. Введи действительный номер скорости");
+                }
             }
-            scanner.nextLine();
         }
+
         race.calculation(participants);
-        System.out.println("Самая быстрая машина: " + race.getWinner());
+        System.out.println("— Самая быстрая машина: " + race.getWinner());
+
+        scanner.close();
     }
 }
